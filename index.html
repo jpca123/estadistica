@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Estadistica</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<header>
+		<h1>Generador de<wbr> tablas de frecuencia</h1>
+	</header>
+
+
+	<form>
+		<h2>Escribe la información necesaria</h2>
+		<label for="sep">Escribe el texto que usarás para separar los datos</label>
+		<input id="sep" type="text" name="hey" required maxlength="3">
+		<label for="data">Introduce los datos</label>
+		<textarea id="data" placeholder="Escribe los numeros" cols="30" rows="8" required></textarea>
+		<button type="submit">Crear Tabla</button>
+	</form>
+	<div class="container">
+		<table class="tabla">
+			<caption>Tabla de frecuencia</caption>
+			<thead>
+				<tr>
+					<td>Valor</td>
+					<td>Fr-Relativa</td>
+					<td>Fr-Absoluta</td>
+					<td>Fr-Porcentual</td>
+				</tr>
+			</thead>
+			<tbody>
+
+			</tbody>
+			<!--Desde JS-->
+			<tfoot>
+			</tfoot>
+		</table>
+	</div>
+	<footer>
+		<p>proyecto de experimento</p>
+	</footer>
+	<script src="script.js" type="module"></script>
+</body>
+
+</html>

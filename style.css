@@ -1,0 +1,184 @@
+*{
+	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+
+body{
+	background-color: #fff;
+}
+header, footer{
+	display: block;
+	align-items: center;
+	padding: 20px;
+	margin-top: 0;
+	background-color: #111;
+	text-align: center;
+	color: #efefef;
+}
+footer{
+	margin-top: 30vh;
+}
+
+h1, h2{
+	display: block;
+	text-align: center;
+	font-size: 1.3em;
+}
+h2{
+	font-size: 1.1em;
+}
+
+/* formulario */
+form{
+	padding: 10px;
+	display: block;
+	margin: 20px auto;
+	width: 400px;
+	max-width: 70vw;
+	text-align: center;
+	border-radius: 5px;
+
+	background-color: rgb(214, 227, 232);
+}
+form label, form input, form textarea{
+	display: block;
+	margin: 10px auto;
+	resize: none;
+	border-color: #222;
+	background-color: transparent;
+	border-width: 1px;
+	padding: 5px;
+}
+form *::placeholder{
+	font-size: inherit;
+	padding: 5px;
+	color: #222;
+}
+form input{
+	width: 50px;
+	padding: 5px;
+	border-style: solid;
+	background-color: #fff;
+	border-color: #222;
+}
+form textarea{
+	width: 70%;
+	height: 80px;
+	background-color: #fff;
+	padding: 5px;
+}
+
+
+/*Tabla de frecuencia */
+.tabla{
+	display: none;
+}
+.ver-tabla{
+	display: block;
+	width: fit-content;
+	table-layout: fixed;
+	text-align: center;
+	margin: 10px auto;
+	border: solid rgb(20, 51, 58)  2px;
+	border-collapse: collapse;
+}
+
+td{
+	width: 150px;
+	height: 50px;
+}
+caption{
+	padding: 10px 0;
+	font-weight: bold;
+}
+tbody tr:nth-child(odd), caption{
+	background-color: rgb(214, 227, 232);
+}
+
+tfoot tr{
+	background-color: rgb(20, 51, 58) ;
+	color: #eee; 
+}
+
+/*Decores varios*/
+
+p{
+	font-size: inherit;
+}
+
+button{
+	display: block;
+	margin: 20px auto;
+	background-color: rgb(31, 104, 43);
+	border: none;
+	color: #eee;
+	padding: 8px;
+	border-radius: 3px;
+	font-size: inherit;
+	text-align: center;
+}
+
+.container p {
+	display: block;
+	padding: 5px;
+	font-size: 1.1em;
+	text-align: center;
+}
+
+/*responsive design*/
+/*  */
+
+
+@media screen and (max-width: 800px){
+	body{
+		font-size: 14px;
+	}
+
+	.ver-tabla{
+		max-width: 80%;
+	}
+
+	td{
+		width: 130px;
+		height: 30px;
+	}
+
+}
+
+
+
+@media screen and (max-width: 420px){
+	body{
+		font-size: 12px;
+	}
+
+	
+
+	.ver-tabla{
+		max-width: 90%;
+		border-width: 1px;
+	}
+
+}
+
+@media screen and (max-width: 300px){
+
+	form{
+		margin: 6px auto;
+		max-width: 70%;
+		padding: 5px;
+	}
+	form label, form input, form textarea{
+		margin: 8px auto;
+	}
+
+
+	.container{
+	}
+	.ver-tabla{
+		max-width: 98%;
+	}
+}
+	
