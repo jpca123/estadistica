@@ -7,6 +7,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Estadistica</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+
 	<link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,36 +28,49 @@
 		<h1>Generador de<wbr> tablas de frecuencia</h1>
 	</header>
 
+	<main>
+		<form class="form">
+			<h2>Escribe la información necesaria</h2>
+			<input id="sep" type="text" name="hey" required maxlength="3" placeholder="Caracter Separador">
+			<textarea id="data" placeholder="Escribe los numeros" cols="30" rows="3" required></textarea>
+			<button class="btn" type="submit">Crear Tabla</button>
+		</form>
 
-	<form>
-		<h2>Escribe la información necesaria</h2>
-		<label for="sep">Escribe el texto que usarás para separar los datos</label>
-		<input id="sep" type="text" name="hey" required maxlength="3">
-		<label for="data">Introduce los datos</label>
-		<textarea id="data" placeholder="Escribe los numeros" cols="30" rows="8" required></textarea>
-		<button type="submit">Crear Tabla</button>
-	</form>
-	<div class="container">
-		<table class="tabla">
-			<caption>Tabla de frecuencia</caption>
-			<thead>
-				<tr>
-					<td>Valor</td>
-					<td>Fr-Relativa</td>
-					<td>Fr-Absoluta</td>
-					<td>Fr-Porcentual</td>
-				</tr>
-			</thead>
-			<tbody>
+		<div class="container none">
 
-			</tbody>
-			<!--Desde JS-->
-			<tfoot>
-			</tfoot>
-		</table>
-	</div>
+			<table class="tabla">
+
+				<p class="tabla-info"></p>
+
+				<caption>Tabla de frecuencia</caption>
+				<thead>
+					<tr>
+						<td>Valor</td>
+						<td>Fr-Relativa</td>
+						<td>Fr-Absoluta</td>
+						<td>Fr-Porcentual</td>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+				<!--Desde JS-->
+				<tfoot>
+					<tr>
+						<td>Total</td>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>
+				</tfoot>
+			</table>
+
+			<button class="btn" id="reload">Crear Otra Tabla</button>
+		</div>
+	</main>
+	
 	<footer>
-		<p>proyecto de experimento</p>
+		<p>Diseñado por: <a href="https://www.jpca123.github.io/portafolio">Juan Pablo Castillo</a></p>
 	</footer>
 	<script src="script.js" type="module"></script>
 </body>

@@ -4,16 +4,17 @@ import {calcFrA, calcFrR, calcFrP, totalFrA, totalFrP, promedio, moda,} from "./
 // variables y constantes globales
 
 const contenedor = document.querySelector(".container"),
-form = document.querySelector("form"),
+form = document.querySelector(".form"),
 separador = document.getElementById("sep"),
 datos = document.getElementById("data"),
 tabla = document.querySelector(".tabla"),
+tablaInfo = document.querySelector('.tabla-info'),
 btnCrear = document.querySelector("button");
 
 
 //Funciones
 
-
+// lee los datos, los filtra y retorna un array
 function array(e){
     e.preventDefault();
     if(data.value === ""){
@@ -24,23 +25,20 @@ function array(e){
     let listaDatos = datos.split(separar);
     listaDatos = listaDatos.filter(res => !isNaN(parseFloat(res)))
     if(listaDatos.length <= 0){
+        form.reset();
         return alert("Al parecer la informacion no puede ser procesada intentalo de nuevo");
     }
+
     form.reset();
-    form.style.display = "none";
+    cambiarInterfaz();
     return calcular(listaDatos);
 }
 
 function crear(obj){
+
+    // informacion variables
     let fragment = document.createDocumentFragment();
-    tabla.classList.remove("tabla");
-    tabla.classList.add("ver-tabla");
-    let thead = tabla.querySelector("thead");
     let tbody = tabla.querySelector("tbody");
-    let tfoot = tabla.querySelector("tfoot");
-
-    tabla.appendChild(tbody, tfoot);
-
     for(let i in obj.datos){
         let fila = document.createElement("tr");
         let cDato = document.createElement("td");
@@ -61,36 +59,18 @@ function crear(obj){
         fragment.appendChild(fila);
     }
     tbody.appendChild(fragment);
-    let rowTotal = document.createElement('tr');
-    let celdaTotal = document.createElement("td");
-    let celdaFrR = document.createElement("td");
-    let celdaFrA = document.createElement("td");
-    let celdaFrP = document.createElement("td");
 
-    celdaTotal.innerHTML = "Total";
-    celdaFrR.innerHTML = obj.FrR;
-    celdaFrA.innerHTML = obj.FrATotal;
-    celdaFrP.innerHTML = obj.FrPTotal
+    // informacion total
+    let listaCeldasTFoot = tabla.querySelector('tfoot').firstElementChild.children;
+    listaCeldasTFoot[1].innerHTML = obj.FrR;
+    listaCeldasTFoot[2].innerHTML = obj.FrATotal;
+    listaCeldasTFoot[3].innerHTML = obj.FrPTotal
 
-
-
-    rowTotal.appendChild(celdaTotal);
-    rowTotal.appendChild(celdaFrR);
-    rowTotal.appendChild(celdaFrA);
-    rowTotal.appendChild(celdaFrP);
-    tfoot.appendChild(rowTotal);
-
-    let parrafo = document.createElement("p");
-    parrafo.innerHTML = `<b>Moda</b>: ${obj.modaData}, <b>Promedio</b>: ${obj.promedio}`;
-    contenedor.insertBefore(parrafo, tabla);
-
-    let botonReload = document.createElement("button");
-    botonReload.innerHTML = "Crear otra tabla";
-    botonReload.id = "reload";
-    contenedor.insertAdjacentElement("beforeend", botonReload);
-
+    // informacion general
+    tablaInfo.innerHTML = `<strong>Moda</strong>: ${obj.modaData}, <strong>Promedio</strong>: ${obj.promedio}`;
 }
 
+// devuelve un objeto con los calculos resueltos y las variables 
 function calcular(lista){
     // devuelve un objeto con los datos y sus variables estadisticas calculadas
     let objInf = {
@@ -120,13 +100,21 @@ function calcular(lista){
 }
 
 
+function cambiarInterfaz(){
+    contenedor.classList.toggle('none');
+    form.classList.toggle('none');
+
+    tabla.querySelector('tbody').innerHTML = '';
+}
+
+
 //Eventos
 
-btnCrear.addEventListener("click", array)
+document.addEventListener("submit", array)
 
 contenedor.addEventListener("click", function(e){
     if(e.target.matches("#reload")){
-        location.reload();
+        cambiarInterfaz();
     }else{
         return false;
     }
