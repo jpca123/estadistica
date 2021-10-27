@@ -125,6 +125,7 @@ h2{
 /*Tabla de frecuencia */
 .tabla{
 	width: fit-content;
+	min-width: 80%;
 	text-align: center;
 	border-collapse: collapse;
 	margin: 1em auto;
@@ -159,6 +160,12 @@ h2{
 	padding: .5em;
 }
 
+
+.container{
+	display: block;
+	width: 100%;
+	margin: 1em auto;
+}
 
 
 /*Decores varios*/
