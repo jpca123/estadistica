@@ -20,6 +20,7 @@ function array(e){
     if(data.value === ""){
         return alert("Por favor rellena los Campos")
     }
+    let decimales = e.target.decimales.value || 4;
     let separar = separador.value || " ",
     datos = data.value;
     let listaDatos = datos.split(separar);
@@ -28,10 +29,10 @@ function array(e){
         form.reset();
         return alert("Al parecer la informacion no puede ser procesada intentalo de nuevo");
     }
-
+    console.log(decimales)
     form.reset();
     cambiarInterfaz();
-    return calcular(listaDatos);
+    return calcular(listaDatos, decimales);
 }
 
 function crear(obj){
@@ -71,7 +72,7 @@ function crear(obj){
 }
 
 // devuelve un objeto con los calculos resueltos y las variables 
-function calcular(lista){
+function calcular(lista, decimales){
     // devuelve un objeto con los datos y sus variables estadisticas calculadas
     let objInf = {
         informacion : lista,
@@ -80,6 +81,7 @@ function calcular(lista){
 
     let objFinal = {datos : {}};
     objFinal.lista = objInf.informacion;
+
     objInf.datos.forEach(num =>{
         objFinal.datos[`numero${num}`]={
             dato : parseFloat(num),
@@ -87,14 +89,14 @@ function calcular(lista){
         }
     })
 
-    objFinal.promedio = promedio(objFinal.lista);
+    objFinal.promedio = promedio(objFinal.lista, decimales);
     for(let i in objFinal.datos){
-        objFinal.datos[i].FrA = calcFrA(objFinal.datos[i].FrR, objFinal.lista);
-        objFinal.datos[i].Frp = calcFrP(objFinal.datos[i].FrA);
+        objFinal.datos[i].FrA = calcFrA(objFinal.datos[i].FrR, objFinal.lista, decimales);
+        objFinal.datos[i].Frp = calcFrP(objFinal.datos[i].FrA, decimales);
     }
     objFinal.modaData = moda(objFinal);
     objFinal.FrR = objFinal.lista.length
-    objFinal.FrATotal = totalFrA(objFinal);
+    objFinal.FrATotal = totalFrA(objFinal, decimales);
     objFinal.FrPTotal = totalFrP(objFinal);
     return crear(objFinal);
 }

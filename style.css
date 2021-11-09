@@ -95,30 +95,32 @@ h2{
 	color: #444;
 	font-size: inherit;
 }
-.form label{
-	display: block;
-}
 
-.form input, .form textarea{
+
+.form__input, .form textarea{
 	display: block;
-	width: max(80%, 10em);
+	width: 80%;
 	margin: 1em auto;
 	padding: .5em;
 	line-height: 1.5;
 	font-size: inherit;
 	background-color: transparent;
 	outline: none;
-}
-.form input{
-	width: 10em;
-	text-align: center;
 	border: none;
-	border-bottom: solid thin var(--primary-color);
+	border-bottom: solid .1em var(--primary-color);
+}
+
+.form__input:focus, .form textarea:focus{
+	box-shadow: 0 0 .5em var(--primary-color);
+}
+
+.form__input{
+	text-align: center;
 }
 .form textarea{
 	display: block;
 	height: auto;
-	border: solid thin var(--primary-color);
+	/*border: solid thin var(--primary-color);*/
 	resize: none;
 }
 

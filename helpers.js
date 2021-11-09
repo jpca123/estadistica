@@ -9,21 +9,16 @@ function calcFrR(lista, item) {
             continue;
         }
     }
-
-    let arr = [1, 2, 3, 4, 4];
-
-    for (let n in arr) {
-    }
     return contador;
 }
 
-function calcFrA(fr, lista) {
-    return parseFloat(fr / lista.length).toFixed(4);
+function calcFrA(fr, lista, decimales=4) {
+    return parseFloat(fr / lista.length).toFixed(decimales);
 }
 
-function calcFrP(fa) {
+function calcFrP(fa, decimales=4) {
     let decimalLargo = parseFloat(fa) * 100
-    return [`${decimalLargo.toFixed(3)}%`, parseFloat(fa)];
+    return [`${decimalLargo.toFixed(decimales)}%`, parseFloat(fa)];
 }
 
 function moda(objeto) {
@@ -47,21 +42,21 @@ function moda(objeto) {
     return max;
 }
 
-function promedio(lista) {
+function promedio(lista, decimales=4) {
     let contador = 0;
     for (let i in lista) {
         contador += parseFloat(lista[i]);
     }
     contador = contador / parseInt(lista.length);
-    return parseFloat(contador.toFixed(4));
+    return parseFloat(contador.toFixed(decimales));
 }
 
-function totalFrA(obj) {
+function totalFrA(obj, decimales=4) {
     let contador = 0;
     for (let i in obj.datos) {
         contador += parseFloat(obj.datos[i].FrA);
     }
-    return parseFloat(contador.toFixed(3));
+    return parseFloat(contador.toFixed(decimales));
 }
 function totalFrP(obj) {
     let contador = 0;

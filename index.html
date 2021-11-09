@@ -32,8 +32,12 @@
 	<main>
 		<form class="form">
 			<h2>Escribe la información necesaria</h2>
-			<input id="sep" type="text" name="hey" required maxlength="3" placeholder="Caracter Separador">
+			<input class="form__input" id="sep" type="text" name="hey" required maxlength="3" placeholder="Caracter Separador">
+
+			<input class="form__input" id="decimales" type="number" name="decimales" required min="0" max="7" placeholder="Cantidad Decimales">
+
 			<textarea id="data" placeholder="Escribe los numeros" cols="30" rows="3" required></textarea>
+
 			<button class="btn" type="submit">Crear Tabla</button>
 		</form>
 
